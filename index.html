@@ -1,0 +1,626 @@
+<title>Matheus Cardozo e Silva</title>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Chivo:wght@400;500;700;900&family=JetBrains+Mono:wght@400;500;700&display=swap">
+<style>
+  /* ---------- tokens: tema escuro é o padrão do editor ---------- */
+  :root{
+    --bg:#0D1013;
+    --bg-2:#12161A;
+    --bg-3:#1A2026;
+    --linha:#222A31;
+    --linha-2:#2E3841;
+    --txt:#D5DCE2;
+    --txt-2:#8B98A3;
+    --txt-3:#5C6773;
+    --ac:#F0A73C;
+    --ac-2:#FFC170;
+    --ac-bg:rgba(240,167,60,.13);
+    --ci:#5FB6C6;
+    --ok:#63BE7B;
+    --sobre-ac:#150E03;
+    --mono:'JetBrains Mono',ui-monospace,'Cascadia Mono','Courier New',monospace;
+    --sans:'Chivo','Helvetica Neue',Arial,sans-serif;
+  }
+  @media (prefers-color-scheme: light){
+    :root:not([data-theme="dark"]){
+      --bg:#F7F6F3;
+      --bg-2:#FFFFFF;
+      --bg-3:#EFEDE8;
+      --linha:#E0DDD6;
+      --linha-2:#CFCBC2;
+      --txt:#14181C;
+      --txt-2:#4F5962;
+      --txt-3:#7C8791;
+      --ac:#A5650A;
+      --ac-2:#8A5307;
+      --ac-bg:rgba(165,101,10,.1);
+      --ci:#0E6577;
+      --ok:#2C7A44;
+      --sobre-ac:#FFFFFF;
+    }
+  }
+  :root[data-theme="light"]{
+    --bg:#F7F6F3;
+    --bg-2:#FFFFFF;
+    --bg-3:#EFEDE8;
+    --linha:#E0DDD6;
+    --linha-2:#CFCBC2;
+    --txt:#14181C;
+    --txt-2:#4F5962;
+    --txt-3:#7C8791;
+    --ac:#A5650A;
+    --ac-2:#8A5307;
+    --ac-bg:rgba(165,101,10,.1);
+    --ci:#0E6577;
+    --ok:#2C7A44;
+    --sobre-ac:#FFFFFF;
+  }
+
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth;scroll-padding-top:56px}
+  body{margin:0;background:var(--bg);color:var(--txt);font-family:var(--sans);font-size:16px;line-height:1.62;-webkit-font-smoothing:antialiased;padding-bottom:30px}
+  a{color:inherit}
+  ::selection{background:var(--ac);color:var(--sobre-ac)}
+  :focus-visible{outline:2px solid var(--ac);outline-offset:2px}
+  @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
+
+  /* ---------- barra superior ---------- */
+  .barra-topo{position:sticky;top:0;z-index:40;background:var(--bg-2);border-bottom:1px solid var(--linha);font-family:var(--mono);font-size:12.5px}
+  .barra-topo .in{max-width:1240px;margin:0 auto;padding:0 22px;height:44px;display:flex;align-items:center;gap:14px}
+  .caminho{color:var(--txt-3);display:flex;align-items:center;gap:6px;min-width:0;overflow:hidden;white-space:nowrap}
+  .caminho b{color:var(--txt);font-weight:500}
+  .caminho .sep{color:var(--linha-2)}
+  .ramo{display:inline-flex;align-items:center;gap:6px;color:var(--ci);border:1px solid var(--linha-2);border-radius:4px;padding:2px 8px;font-size:11.5px}
+  .barra-topo .dir{margin-left:auto;display:flex;align-items:center;gap:14px;color:var(--txt-3)}
+  .tema{background:none;border:1px solid var(--linha-2);color:var(--txt-2);font:inherit;font-size:11.5px;border-radius:4px;padding:3px 9px;cursor:pointer}
+  .tema:hover{border-color:var(--ac);color:var(--ac)}
+  @media(max-width:700px){.barra-topo .dir span{display:none}}
+
+  /* ---------- estrutura ---------- */
+  .quadro{max-width:1240px;margin:0 auto;padding:0 22px;display:grid;grid-template-columns:224px minmax(0,1fr);gap:0 40px;align-items:start}
+  @media(max-width:960px){.quadro{grid-template-columns:1fr;gap:0}}
+
+  /* ---------- explorador ---------- */
+  .explorador{position:sticky;top:44px;padding:26px 0 30px;font-family:var(--mono);font-size:13px;border-right:1px solid var(--linha);margin-right:-20px;padding-right:20px;min-height:calc(100vh - 44px)}
+  @media(max-width:960px){.explorador{position:static;border-right:0;margin-right:0;padding-right:0;min-height:0;padding-block:18px 8px;border-bottom:1px solid var(--linha)}}
+  .explorador .cab{color:var(--txt-3);font-size:11px;letter-spacing:.16em;margin:0 0 14px}
+  .arv{display:flex;flex-direction:column}
+  .arv a{display:flex;gap:0;text-decoration:none;color:var(--txt-2);padding:3px 6px 3px 0;border-radius:3px;white-space:nowrap}
+  .arv a .g{color:var(--linha-2);white-space:pre;flex:none}
+  .arv a:hover{color:var(--txt);background:var(--bg-3)}
+  .arv a.aqui{color:var(--ac)}
+  .arv a.aqui .g{color:var(--ac)}
+  .arv .ext{color:var(--txt-3)}
+  .arv a.aqui .ext{color:var(--ac-2)}
+  @media(max-width:960px){.arv{flex-direction:row;flex-wrap:wrap;gap:2px 4px}.arv a .g{display:none}}
+  .explorador .rodape{margin-top:26px;padding-top:16px;border-top:1px solid var(--linha);color:var(--txt-3);font-size:11.5px;line-height:1.8}
+  @media(max-width:960px){.explorador .rodape{display:none}}
+
+  /* ---------- conteúdo ---------- */
+  main{padding:30px 0 40px;min-width:0}
+  section{padding-bottom:62px}
+  .anot{font-family:var(--mono);font-size:12.5px;color:var(--txt-3);margin:0 0 20px;display:flex;align-items:center;gap:9px}
+  .anot::before{content:'//';color:var(--ac)}
+  h2{font-family:var(--sans);font-weight:900;font-size:clamp(23px,3vw,30px);line-height:1.14;letter-spacing:-.022em;margin:0 0 18px;max-width:26ch;text-wrap:balance}
+  p{margin:0 0 16px;max-width:66ch;color:var(--txt-2)}
+  p strong{color:var(--txt);font-weight:700}
+
+  /* ---------- abertura ---------- */
+  .estado{display:inline-flex;align-items:center;gap:8px;font-family:var(--mono);font-size:12px;color:var(--ok);border:1px solid var(--linha-2);border-radius:4px;padding:4px 11px;margin-bottom:24px}
+  .estado i{width:7px;height:7px;border-radius:50%;background:var(--ok);flex:none}
+  h1{font-family:var(--sans);font-weight:900;font-size:clamp(31px,5vw,52px);line-height:1.04;letter-spacing:-.035em;margin:0 0 22px;max-width:19ch;text-wrap:balance;color:var(--txt)}
+  h1 .cur{display:inline-block;width:.5em;height:.86em;background:var(--ac);vertical-align:-.06em;margin-left:.1em;animation:pisca 1.15s steps(1) infinite}
+  @keyframes pisca{0%,49%{opacity:1}50%,100%{opacity:0}}
+  .lede{font-size:18px;line-height:1.55;max-width:60ch}
+
+  .botoes{display:flex;flex-wrap:wrap;gap:10px;margin-top:28px}
+  .btn{display:inline-flex;align-items:center;gap:8px;text-decoration:none;font-family:var(--mono);font-weight:500;font-size:13.5px;padding:11px 18px;border-radius:5px;border:1px solid transparent;transition:background .13s ease,border-color .13s ease,color .13s ease}
+  .btn-cheio{background:var(--ac);color:var(--sobre-ac);font-weight:700}
+  .btn-cheio:hover{background:var(--ac-2)}
+  .btn-vazio{border-color:var(--linha-2);color:var(--txt)}
+  .btn-vazio:hover{border-color:var(--ac);color:var(--ac)}
+
+  /* ---------- especificações ---------- */
+  .specs{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1px;background:var(--linha);border:1px solid var(--linha);border-radius:7px;overflow:hidden;margin-top:40px}
+  @media(max-width:640px){.specs{grid-template-columns:1fr}}
+  .spec{background:var(--bg-2);padding:17px 19px 19px}
+  .spec b{display:block;font-family:var(--mono);font-size:12px;color:var(--ac);letter-spacing:.03em;margin-bottom:7px}
+  .spec span{display:block;font-size:14.5px;color:var(--txt-2);line-height:1.5}
+
+  /* ---------- sobre ---------- */
+  .sobre{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,.8fr);gap:44px}
+  @media(max-width:860px){.sobre{grid-template-columns:1fr;gap:28px}}
+  .ficha{border:1px solid var(--linha);border-radius:7px;background:var(--bg-2);font-family:var(--mono);font-size:12.5px;overflow:hidden}
+  .ficha .tt{padding:10px 15px;border-bottom:1px solid var(--linha);color:var(--txt-3);font-size:11px;letter-spacing:.13em;background:var(--bg-3)}
+  .ficha dl{margin:0;padding:13px 15px;display:grid;grid-template-columns:auto 1fr;gap:9px 14px}
+  .ficha dt{color:var(--txt-3)}
+  .ficha dd{margin:0;color:var(--txt);text-align:right}
+  .ficha dd em{font-style:normal;color:var(--ci)}
+
+  /* ---------- serviços ---------- */
+  .servicos{border-top:1px solid var(--linha)}
+  .servico{display:grid;grid-template-columns:200px minmax(0,1fr);gap:12px 36px;padding:24px 0;border-bottom:1px solid var(--linha)}
+  @media(max-width:760px){.servico{grid-template-columns:1fr;gap:10px}}
+  .servico .chave{font-family:var(--mono);font-size:13px;color:var(--ac);line-height:1.7}
+  .servico .chave small{display:block;color:var(--txt-3);font-size:11.5px}
+  .servico h3{font-family:var(--sans);font-weight:700;font-size:19px;letter-spacing:-.015em;margin:0 0 8px;color:var(--txt)}
+  .servico p{margin:0 0 13px}
+  .lista{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:5px}
+  .lista li{font-family:var(--mono);font-size:11.5px;color:var(--txt-2);border:1px solid var(--linha);border-radius:4px;padding:3px 8px;background:var(--bg-2)}
+
+  /* ---------- projetos ---------- */
+  .repos{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
+  @media(max-width:920px){.repos{grid-template-columns:1fr}}
+  .repo{display:flex;flex-direction:column;text-decoration:none;background:var(--bg-2);border:1px solid var(--linha);border-radius:8px;overflow:hidden;transition:border-color .14s ease}
+  .repo:hover{border-color:var(--ac)}
+  .miniatura{aspect-ratio:300/132;border-bottom:1px solid var(--linha);background:var(--bg-3)}
+  .miniatura svg{display:block;width:100%;height:100%}
+  .repo .txt{padding:15px 17px 17px;display:flex;flex-direction:column;gap:7px;flex:1}
+  .repo h3{font-family:var(--mono);font-weight:700;font-size:15px;margin:0;color:var(--ac);letter-spacing:-.01em}
+  .repo p{margin:0;font-size:14px;line-height:1.5;color:var(--txt-2)}
+  .meta{margin-top:auto;padding-top:12px;display:flex;align-items:center;flex-wrap:wrap;gap:6px 14px;font-family:var(--mono);font-size:11.5px;color:var(--txt-3)}
+  .ling{display:inline-flex;align-items:center;gap:6px}
+  .ling i{width:9px;height:9px;border-radius:50%;flex:none}
+  .repo .abrir{color:var(--ci);margin-left:auto}
+  .nota{font-family:var(--mono);font-size:12.5px;color:var(--txt-3);margin-top:18px;max-width:78ch;line-height:1.7}
+
+  /* ---------- processo ---------- */
+  .etapas{list-style:none;margin:0;padding:0;counter-reset:e;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:22px}
+  @media(max-width:880px){.etapas{grid-template-columns:repeat(2,minmax(0,1fr))}}
+  @media(max-width:520px){.etapas{grid-template-columns:1fr}}
+  .etapas li{counter-increment:e;border-top:1px solid var(--linha-2);padding-top:13px}
+  .etapas li::before{content:'0' counter(e);font-family:var(--mono);font-size:12px;color:var(--ac);display:block;margin-bottom:6px}
+  .etapas b{display:block;font-family:var(--sans);font-weight:700;font-size:16.5px;margin-bottom:4px;color:var(--txt)}
+  .etapas span{font-size:14px;color:var(--txt-2);line-height:1.55}
+
+  /* ---------- pilha ---------- */
+  .pilha{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:1px;background:var(--linha);border:1px solid var(--linha);border-radius:7px;overflow:hidden;margin-top:4px}
+  @media(max-width:780px){.pilha{grid-template-columns:repeat(2,minmax(0,1fr))}}
+  @media(max-width:440px){.pilha{grid-template-columns:1fr}}
+  .pilha > div{background:var(--bg-2);padding:15px 17px 17px}
+  .pilha h4{font-family:var(--mono);font-size:11px;letter-spacing:.13em;color:var(--txt-3);margin:0 0 10px;font-weight:400}
+  .pilha ul{list-style:none;margin:0;padding:0;font-family:var(--mono);font-size:12.5px;color:var(--txt-2);display:flex;flex-direction:column;gap:4px}
+  .pilha li::before{content:'· ';color:var(--linha-2)}
+
+  /* ---------- dúvidas ---------- */
+  .duvidas{border-top:1px solid var(--linha)}
+  .duvidas details{border-bottom:1px solid var(--linha)}
+  .duvidas summary{cursor:pointer;list-style:none;padding:15px 0 15px 26px;position:relative;font-weight:700;font-size:16px;color:var(--txt)}
+  .duvidas summary::-webkit-details-marker{display:none}
+  .duvidas summary::before{content:'>';position:absolute;left:0;top:15px;font-family:var(--mono);color:var(--ac);transition:transform .15s ease;display:inline-block}
+  .duvidas details[open] summary::before{transform:rotate(90deg)}
+  .duvidas p{padding:0 0 17px 26px;margin:0;font-size:15.5px}
+
+  /* ---------- contato ---------- */
+  .contato{border:1px solid var(--linha);border-radius:8px;background:var(--bg-2);overflow:hidden}
+  .contato .tt{padding:10px 18px;border-bottom:1px solid var(--linha);background:var(--bg-3);font-family:var(--mono);font-size:11.5px;color:var(--txt-3);letter-spacing:.1em}
+  .contato .in{padding:26px 24px 24px}
+  .canais{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1px;background:var(--linha);border:1px solid var(--linha);border-radius:6px;overflow:hidden;margin:22px 0 24px}
+  @media(max-width:620px){.canais{grid-template-columns:1fr}}
+  .canal{background:var(--bg-2);padding:14px 16px;text-decoration:none;display:flex;align-items:center;gap:12px;transition:background .13s ease}
+  .canal:hover{background:var(--bg-3)}
+  .canal .ic{width:30px;height:30px;border-radius:6px;background:var(--ac-bg);color:var(--ac);display:grid;place-items:center;flex:none}
+  .canal b{display:block;font-family:var(--mono);font-size:13.5px;font-weight:500;color:var(--txt)}
+  .canal small{display:block;font-family:var(--mono);font-size:11.5px;color:var(--txt-3);word-break:break-all}
+
+  /* ---------- barra de status ---------- */
+  .status-bar{position:fixed;left:0;right:0;bottom:0;z-index:50;background:var(--bg-2);border-top:1px solid var(--linha);font-family:var(--mono);font-size:11.5px;color:var(--txt-3)}
+  .status-bar .in{max-width:1240px;margin:0 auto;padding:0 22px;height:30px;display:flex;align-items:center;gap:18px;overflow:hidden;white-space:nowrap}
+  .status-bar .liv{color:var(--ok);display:inline-flex;align-items:center;gap:6px}
+  .status-bar .liv i{width:6px;height:6px;border-radius:50%;background:var(--ok)}
+  .status-bar .dir{margin-left:auto}
+  @media(max-width:820px){.status-bar .esc{display:none}}
+</style>
+
+<div class="barra-topo">
+  <div class="in">
+    <span class="caminho"><b>matheus-cardozo</b><span class="sep">/</span>portfolio<span class="sep">/</span>index.html</span>
+    <span class="ramo">main</span>
+    <span class="dir">
+      <span>freelancer · front-end</span>
+      <button class="tema" type="button" id="tema" aria-live="polite">tema: sistema</button>
+    </span>
+  </div>
+</div>
+
+<div class="quadro">
+
+  <aside class="explorador">
+    <p class="cab">PORTFOLIO</p>
+    <nav class="arv" id="arv" aria-label="Seções">
+      <a href="#inicio"><span class="g">├─ </span>inicio<span class="ext">.md</span></a>
+      <a href="#sobre"><span class="g">├─ </span>sobre<span class="ext">.md</span></a>
+      <a href="#servicos"><span class="g">├─ </span>servicos<span class="ext">.md</span></a>
+      <a href="#projetos"><span class="g">├─ </span>projetos<span class="ext">/</span></a>
+      <a href="#processo"><span class="g">├─ </span>processo<span class="ext">.md</span></a>
+      <a href="#duvidas"><span class="g">├─ </span>duvidas<span class="ext">.md</span></a>
+      <a href="#contato"><span class="g">└─ </span>contato<span class="ext">.md</span></a>
+    </nav>
+    <div class="rodape">
+      São Paulo, BR<br>
+      UTC−03:00<br>
+      Remoto, Brasil inteiro
+    </div>
+  </aside>
+
+  <main>
+
+    <!-- ===================== inicio ===================== -->
+    <section id="inicio">
+      <span class="estado"><i></i>disponível para novos projetos</span>
+      <h1>Sites, interfaces e automações escritos à mão<span class="cur" aria-hidden="true"></span></h1>
+      <p class="lede">Sou <strong>Matheus Cardozo e Silva</strong>, desenvolvedor front-end. Trabalho com HTML, CSS e JavaScript de verdade — nada de construtor de página arrastando bloco. O resultado abre rápido no 4G, funciona no celular do seu cliente e não quebra na próxima atualização de um plugin.</p>
+      <div class="botoes">
+        <a class="btn btn-cheio" href="#contato">Falar sobre o seu projeto</a>
+        <a class="btn btn-vazio" href="#projetos">Ver o código rodando</a>
+      </div>
+
+      <div class="specs">
+        <div class="spec">
+          <b>sem construtor de página</b>
+          <span>Código escrito e versionado no Git. Na entrega, o repositório é seu — outro desenvolvedor consegue continuar de onde eu parei.</span>
+        </div>
+        <div class="spec">
+          <b>leve por construção</b>
+          <span>Cada página deste portfólio é um único arquivo HTML, sem framework e sem dependência externa além das fontes.</span>
+        </div>
+        <div class="spec">
+          <b>testado em tela pequena</b>
+          <span>Layout conferido no celular antes de subir, não depois que o cliente reclama.</span>
+        </div>
+        <div class="spec">
+          <b>resposta em 1 dia útil</b>
+          <span>Você manda a ideia, eu volto com perguntas e um caminho técnico. Sem sumiço no meio do projeto.</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== sobre ===================== -->
+    <section id="sobre">
+      <p class="anot">sobre.md</p>
+      <div class="sobre">
+        <div>
+          <h2>Estou começando como freelancer, e isso joga a favor de quem me contrata.</h2>
+          <p>Quer dizer que o seu projeto não é o quadragésimo da fila. Tenho tempo para entender o negócio antes de abrir o editor, testar em aparelho de verdade e refazer a tela que ficou estranha.</p>
+          <p>Trabalho em três frentes que quase sempre andam juntas: a <strong>página</strong> que o cliente vê, o <strong>desenho</strong> dessa página e a <strong>automação</strong> do que acontece depois que alguém clica em enviar. Gosto de resolver coisa chata e repetitiva — o orçamento feito à mão, o WhatsApp que fica sem resposta de madrugada, a planilha que alguém copia e cola toda segunda-feira.</p>
+          <p>Escrevo tudo em português claro. Se você não entender uma decisão técnica que eu tomei, a falha é minha em explicar — pode perguntar quantas vezes precisar.</p>
+        </div>
+        <div class="ficha">
+          <div class="tt">FICHA TÉCNICA</div>
+          <dl>
+            <dt>base</dt><dd>São Paulo, BR</dd>
+            <dt>atendimento</dt><dd>remoto</dd>
+            <dt>idioma</dt><dd>português</dd>
+            <dt>foco</dt><dd><em>front-end</em></dd>
+            <dt>reuniões</dt><dd>chamada ou áudio</dd>
+            <dt>entrega</dt><dd>repositório Git</dd>
+            <dt>suporte</dt><dd>30 dias inclusos</dd>
+            <dt>status</dt><dd><em>aceitando projetos</em></dd>
+          </dl>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== servicos ===================== -->
+    <section id="servicos">
+      <p class="anot">servicos.md</p>
+      <h2>Três frentes, contratadas juntas ou separadas.</h2>
+
+      <div class="servicos">
+        <article class="servico">
+          <div class="chave">web<small>site · landing page</small></div>
+          <div>
+            <h3>Sites e páginas de venda</h3>
+            <p>Da página única que apresenta o serviço até o site de várias seções com cardápio, catálogo ou portfólio. Feito para abrir rápido, aparecer na busca do Google e levar a pessoa até o botão de contato.</p>
+            <ul class="lista">
+              <li>layout responsivo</li>
+              <li>otimização para busca</li>
+              <li>formulário / WhatsApp</li>
+              <li>publicação e domínio</li>
+              <li>painel de estatísticas</li>
+            </ul>
+          </div>
+        </article>
+
+        <article class="servico">
+          <div class="chave">ui<small>interface · protótipo</small></div>
+          <div>
+            <h3>Design de interface</h3>
+            <p>O desenho antes do código: como a tela se organiza, o que aparece primeiro, quais cores e tipos a marca usa. Serve tanto para um produto novo quanto para arrumar um sistema que já existe e ficou confuso de usar.</p>
+            <ul class="lista">
+              <li>protótipo navegável</li>
+              <li>paleta e tipografia</li>
+              <li>componentes reutilizáveis</li>
+              <li>celular e desktop</li>
+            </ul>
+          </div>
+        </article>
+
+        <article class="servico">
+          <div class="chave">auto<small>bot · integração</small></div>
+          <div>
+            <h3>Automações e integrações</h3>
+            <p>Tudo aquilo que hoje alguém faz repetindo o mesmo clique. Robô de atendimento no WhatsApp, envio automático de proposta, planilha que se preenche sozinha, relatório que chega por e-mail toda segunda.</p>
+            <ul class="lista">
+              <li>bot de WhatsApp</li>
+              <li>integração com planilhas</li>
+              <li>disparo de e-mails</li>
+              <li>painéis de acompanhamento</li>
+              <li>rotinas agendadas</li>
+            </ul>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- ===================== projetos ===================== -->
+    <section id="projetos">
+      <p class="anot">projetos/</p>
+      <h2>Três peças que abrem e funcionam de verdade.</h2>
+
+      <div class="repos">
+        <a class="repo" href="projetos/cafeteria.html">
+          <div class="miniatura">
+            <svg viewBox="0 0 300 132" role="img" aria-label="Miniatura da página da cafeteria Torra Nove">
+              <rect width="300" height="132" fill="#241610"/>
+              <rect x="0" y="0" width="300" height="26" fill="#33211A"/>
+              <rect x="18" y="10" width="46" height="6" rx="3" fill="#C77B2C"/>
+              <rect x="222" y="11" width="26" height="4" rx="2" fill="#6E5A48"/>
+              <rect x="256" y="11" width="26" height="4" rx="2" fill="#6E5A48"/>
+              <rect x="18" y="44" width="150" height="13" rx="2" fill="#F1E7D4"/>
+              <rect x="18" y="63" width="112" height="13" rx="2" fill="#C77B2C"/>
+              <rect x="18" y="88" width="176" height="4" rx="2" fill="#6E5A48"/>
+              <rect x="18" y="98" width="140" height="4" rx="2" fill="#6E5A48"/>
+              <rect x="18" y="112" width="62" height="12" rx="2" fill="#C77B2C"/>
+              <circle cx="248" cy="80" r="30" fill="none" stroke="#5A4535" stroke-width="1.5"/>
+              <text x="248" y="90" font-family="Georgia, serif" font-size="30" fill="#F1E7D4" text-anchor="middle">9</text>
+            </svg>
+          </div>
+          <div class="txt">
+            <h3>torra-nove</h3>
+            <p>Site de cafeteria de torra própria: capa, origens dos grãos, cardápio completo e informações de visita.</p>
+            <div class="meta">
+              <span class="ling"><i style="background:#E44D26"></i>HTML</span>
+              <span class="ling"><i style="background:#2965F1"></i>CSS</span>
+              <span class="abrir">abrir →</span>
+            </div>
+          </div>
+        </a>
+
+        <a class="repo" href="projetos/painel.html">
+          <div class="miniatura">
+            <svg viewBox="0 0 300 132" role="img" aria-label="Miniatura do painel de gestão da barbearia">
+              <rect width="300" height="132" fill="#F1F3F5"/>
+              <rect x="0" y="0" width="58" height="132" fill="#101519"/>
+              <rect x="10" y="12" width="20" height="20" rx="5" fill="#2E7C8C"/>
+              <rect x="10" y="44" width="34" height="4" rx="2" fill="#39434C"/>
+              <rect x="10" y="56" width="28" height="4" rx="2" fill="#39434C"/>
+              <rect x="10" y="68" width="32" height="4" rx="2" fill="#39434C"/>
+              <rect x="70" y="12" width="52" height="30" rx="5" fill="#FFF" stroke="#DFE3E8"/>
+              <rect x="130" y="12" width="52" height="30" rx="5" fill="#FFF" stroke="#DFE3E8"/>
+              <rect x="190" y="12" width="52" height="30" rx="5" fill="#FFF" stroke="#DFE3E8"/>
+              <rect x="250" y="12" width="38" height="30" rx="5" fill="#FFF" stroke="#DFE3E8"/>
+              <rect x="70" y="52" width="130" height="68" rx="5" fill="#FFF" stroke="#DFE3E8"/>
+              <rect x="82" y="94" width="14" height="14" rx="3" fill="#2E7C8C"/>
+              <rect x="102" y="86" width="14" height="22" rx="3" fill="#2E7C8C"/>
+              <rect x="122" y="90" width="14" height="18" rx="3" fill="#2E7C8C"/>
+              <rect x="142" y="74" width="14" height="34" rx="3" fill="#2E7C8C"/>
+              <rect x="162" y="64" width="14" height="44" rx="3" fill="#2E7C8C"/>
+              <rect x="208" y="52" width="80" height="68" rx="5" fill="#FFF" stroke="#DFE3E8"/>
+              <rect x="216" y="62" width="42" height="4" rx="2" fill="#C6CDD4"/>
+              <rect x="216" y="74" width="60" height="4" rx="2" fill="#C6CDD4"/>
+              <rect x="216" y="86" width="50" height="4" rx="2" fill="#C6CDD4"/>
+              <rect x="216" y="98" width="58" height="4" rx="2" fill="#C6CDD4"/>
+            </svg>
+          </div>
+          <div class="txt">
+            <h3>corte-reto</h3>
+            <p>Painel de gestão de barbearia: faturamento da semana, ocupação da agenda e atendimentos do dia em uma tela.</p>
+            <div class="meta">
+              <span class="ling"><i style="background:#F0DB4F"></i>JavaScript</span>
+              <span class="ling"><i style="background:#2965F1"></i>CSS</span>
+              <span class="abrir">abrir →</span>
+            </div>
+          </div>
+        </a>
+
+        <a class="repo" href="projetos/bot.html">
+          <div class="miniatura">
+            <svg viewBox="0 0 300 132" role="img" aria-label="Miniatura do bot de WhatsApp">
+              <rect width="300" height="132" fill="#0B1219"/>
+              <rect x="96" y="10" width="108" height="132" rx="14" fill="#0A1218" stroke="#1D2A35" stroke-width="3"/>
+              <rect x="99" y="13" width="102" height="20" fill="#12222C"/>
+              <circle cx="112" cy="23" r="6" fill="#22C081"/>
+              <rect x="123" y="19" width="40" height="4" rx="2" fill="#8FA3B0"/>
+              <rect x="123" y="27" width="22" height="3" rx="1.5" fill="#22C081"/>
+              <rect x="105" y="42" width="66" height="22" rx="7" fill="#1B2A35"/>
+              <rect x="112" y="49" width="44" height="3.5" rx="1.75" fill="#7C8E9B"/>
+              <rect x="112" y="56" width="30" height="3.5" rx="1.75" fill="#7C8E9B"/>
+              <rect x="134" y="70" width="62" height="16" rx="7" fill="#134D38"/>
+              <rect x="141" y="76" width="40" height="3.5" rx="1.75" fill="#8FD4B6"/>
+              <rect x="105" y="92" width="74" height="16" rx="7" fill="#1B2A35"/>
+              <rect x="112" y="98" width="52" height="3.5" rx="1.75" fill="#7C8E9B"/>
+              <rect x="105" y="114" width="42" height="13" rx="6.5" fill="none" stroke="#22C081" stroke-width="1.2"/>
+              <rect x="152" y="114" width="42" height="13" rx="6.5" fill="none" stroke="#22C081" stroke-width="1.2"/>
+              <rect x="22" y="44" width="48" height="4" rx="2" fill="#22C081"/>
+              <rect x="22" y="56" width="60" height="4" rx="2" fill="#2C3B47"/>
+              <rect x="22" y="68" width="52" height="4" rx="2" fill="#2C3B47"/>
+              <rect x="230" y="44" width="48" height="4" rx="2" fill="#2C3B47"/>
+              <rect x="230" y="56" width="38" height="4" rx="2" fill="#2C3B47"/>
+            </svg>
+          </div>
+          <div class="txt">
+            <h3>agenda-no-zap</h3>
+            <p>Assistente de WhatsApp que agenda horários sozinho. Clique nas opções e feche uma reserva de ponta a ponta.</p>
+            <div class="meta">
+              <span class="ling"><i style="background:#F0DB4F"></i>JavaScript</span>
+              <span class="ling"><i style="background:#E44D26"></i>HTML</span>
+              <span class="abrir">abrir →</span>
+            </div>
+          </div>
+        </a>
+      </div>
+
+      <p class="nota">Projetos autorais, com marcas fictícias, feitos para mostrar padrão de acabamento — está escrito na própria página que são demonstrações. O código-fonte dos três está no mesmo repositório desta página.</p>
+    </section>
+
+    <!-- ===================== processo ===================== -->
+    <section id="processo">
+      <p class="anot">processo.md</p>
+      <h2>Quatro etapas, do primeiro "oi" até o site no ar.</h2>
+      <ol class="etapas">
+        <li>
+          <b>Conversa</b>
+          <span>Uma chamada de 30 minutos para eu entender o negócio, o público e o que precisa acontecer na página.</span>
+        </li>
+        <li>
+          <b>Combinado</b>
+          <span>Escopo, prazo e o que exatamente entra na entrega, tudo por escrito antes de eu abrir o editor.</span>
+        </li>
+        <li>
+          <b>Construção</b>
+          <span>Você acompanha por um link que atualiza sozinho a cada mudança. Uma rodada de ajustes por etapa.</span>
+        </li>
+        <li>
+          <b>Entrega</b>
+          <span>Site publicado, acessos e repositório no seu nome, e 30 dias de suporte para o que aparecer.</span>
+        </li>
+      </ol>
+
+      <p class="anot" style="margin-top:44px">ferramentas</p>
+      <div class="pilha">
+        <div>
+          <h4>FRONT-END</h4>
+          <ul><li>HTML</li><li>CSS</li><li>JavaScript</li><li>React</li><li>Tailwind</li></ul>
+        </div>
+        <div>
+          <h4>BACK-END</h4>
+          <ul><li>Node.js</li><li>Supabase</li><li>REST APIs</li></ul>
+        </div>
+        <div>
+          <h4>DESIGN</h4>
+          <ul><li>Figma</li><li>Tipografia</li><li>Design system</li></ul>
+        </div>
+        <div>
+          <h4>OPERAÇÃO</h4>
+          <ul><li>Git / GitHub</li><li>Vercel</li><li>n8n</li><li>Google Sheets API</li></ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== duvidas ===================== -->
+    <section id="duvidas">
+      <p class="anot">duvidas.md</p>
+      <h2>O que costumam me perguntar antes de fechar.</h2>
+      <div class="duvidas">
+        <details open>
+          <summary>Em quanto tempo fica pronto?</summary>
+          <p>Uma landing page costuma levar de 5 a 10 dias. Um site com várias seções, de 2 a 4 semanas. Automações variam bastante conforme os sistemas envolvidos. O prazo entra no combinado por escrito e eu aviso na hora se algo atrasar — não no dia da entrega.</p>
+        </details>
+        <details>
+          <summary>Eu preciso já ter domínio e hospedagem?</summary>
+          <p>Não. Se você ainda não tem, eu indico onde comprar e configuro tudo — mas sempre registrado no seu nome, com você como dono da conta. Domínio de cliente em nome do desenvolvedor é dor de cabeça garantida lá na frente.</p>
+        </details>
+        <details>
+          <summary>Como eu acompanho o andamento?</summary>
+          <p>Cada mudança que eu faço sobe para um link de teste que atualiza sozinho. Você abre no celular quando quiser, vê como está ficando e me manda os ajustes. Nada de esperar semanas para ver a primeira tela.</p>
+        </details>
+        <details>
+          <summary>E depois que entrega, acabou?</summary>
+          <p>Trinta dias de suporte já vêm inclusos para corrigir qualquer coisa que apareça. Depois disso dá para contratar manutenção mensal ou me chamar pontualmente quando precisar mudar algo.</p>
+        </details>
+        <details>
+          <summary>Você faz o texto e as fotos também?</summary>
+          <p>Ajudo com o texto: reescrevo o que você me mandar para ficar mais direto. Fotos profissionais eu não faço, mas oriento o que fotografar e trato as imagens que você tiver.</p>
+        </details>
+        <details>
+          <summary>Por que não usar WordPress ou um construtor de sites?</summary>
+          <p>Para muita gente serve, e eu digo isso na cara. Mas construtor entrega uma página pesada, cheia de código que você não usa, presa a uma assinatura mensal e a plugins que podem quebrar sozinhos. Se o site é a vitrine principal do seu negócio, vale ter algo escrito sob medida — que você pode levar para qualquer hospedagem no dia em que quiser.</p>
+        </details>
+      </div>
+    </section>
+
+    <!-- ===================== contato ===================== -->
+    <section id="contato">
+      <p class="anot">contato.md</p>
+      <div class="contato">
+        <div class="tt">ABRIR CONVERSA</div>
+        <div class="in">
+          <h2>Me conta a sua ideia.</h2>
+          <p>Não precisa chegar com tudo pronto. Um parágrafo dizendo o que é o negócio e o que você quer que aconteça já basta para eu voltar com um caminho.</p>
+
+          <div class="canais">
+            <a class="canal" href="https://wa.me/5511900000000?text=Oi%20Matheus!%20Vi%20seu%20portf%C3%B3lio%20e%20queria%20falar%20sobre%20um%20projeto." target="_blank" rel="noopener">
+              <span class="ic"><svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><path d="M8 1.6A6.4 6.4 0 0 0 2.5 11L1.7 14.3l3.4-.8A6.4 6.4 0 1 0 8 1.6Z" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/></svg></span>
+              <span><b>whatsapp</b><small>(11) 90000-0000</small></span>
+            </a>
+            <a class="canal" href="mailto:matheussilvacdz7@gmail.com">
+              <span class="ic"><svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><rect x="1.5" y="3.5" width="13" height="9" rx="1.5" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="m2 4.5 6 4.2 6-4.2" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/></svg></span>
+              <span><b>e-mail</b><small>matheussilvacdz7@gmail.com</small></span>
+            </a>
+            <a class="canal" href="https://github.com/seu-usuario" target="_blank" rel="noopener">
+              <span class="ic"><svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><path d="M6 14.2c-3 .9-3-1.6-4.2-1.9m8.4 3.4v-2.6c0-.7.1-1-.3-1.4 1.9-.2 3.6-.9 3.6-4a3.1 3.1 0 0 0-.9-2.2 2.9 2.9 0 0 0-.1-2.2s-.7-.2-2.4.9a8.2 8.2 0 0 0-4.2 0C4.2 3.1 3.5 3.3 3.5 3.3a2.9 2.9 0 0 0-.1 2.2 3.1 3.1 0 0 0-.9 2.2c0 3.1 1.7 3.8 3.6 4-.3.3-.3.7-.3 1.1v2.9" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+              <span><b>github</b><small>github.com/seu-usuario</small></span>
+            </a>
+            <a class="canal" href="https://www.linkedin.com/in/seu-usuario" target="_blank" rel="noopener">
+              <span class="ic"><svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><rect x="1.5" y="1.5" width="13" height="13" rx="2" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M5 6.8v4.4M5 4.6v.1M8 11.2V6.8m0 1.4c.4-1.2 3-1.5 3 .8v2.2" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></span>
+              <span><b>linkedin</b><small>linkedin.com/in/seu-usuario</small></span>
+            </a>
+          </div>
+
+          <div class="botoes">
+            <a class="btn btn-cheio" href="https://wa.me/5511900000000?text=Oi%20Matheus!%20Vi%20seu%20portf%C3%B3lio%20e%20queria%20falar%20sobre%20um%20projeto." target="_blank" rel="noopener">Chamar no WhatsApp</a>
+            <a class="btn btn-vazio" href="mailto:matheussilvacdz7@gmail.com">Mandar um e-mail</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+</div>
+
+<div class="status-bar">
+  <div class="in">
+    <span class="liv"><i></i>disponível</span>
+    <span class="esc">São Paulo, BR</span>
+    <span class="esc">resposta em 1 dia útil</span>
+    <span class="dir">© 2026 Matheus Cardozo e Silva</span>
+  </div>
+</div>
+
+<script>
+(function(){
+  /* ---- alternador de tema ---- */
+  var btn = document.getElementById('tema');
+  var raiz = document.documentElement;
+  var ordem = ['sistema','escuro','claro'];
+  var atual = 0;
+  try { var s = localStorage.getItem('tema'); if (s && ordem.indexOf(s) > -1) atual = ordem.indexOf(s); } catch(e){}
+
+  function aplica(){
+    var m = ordem[atual];
+    if (m === 'sistema') raiz.removeAttribute('data-theme');
+    else raiz.setAttribute('data-theme', m === 'escuro' ? 'dark' : 'light');
+    btn.textContent = 'tema: ' + m;
+    try { localStorage.setItem('tema', m); } catch(e){}
+  }
+  aplica();
+  btn.addEventListener('click', function(){ atual = (atual + 1) % ordem.length; aplica(); });
+
+  /* ---- seção ativa no explorador ---- */
+  var links = Array.prototype.slice.call(document.querySelectorAll('#arv a'));
+  var alvos = links.map(function(a){ return document.getElementById(a.getAttribute('href').slice(1)); });
+  if (!('IntersectionObserver' in window)) return;
+
+  var vistos = new Set();
+  var obs = new IntersectionObserver(function(ents){
+    ents.forEach(function(e){ e.isIntersecting ? vistos.add(e.target) : vistos.delete(e.target); });
+    var primeiro = -1;
+    for (var i = 0; i < alvos.length; i++){ if (vistos.has(alvos[i])) { primeiro = i; break; } }
+    if (primeiro < 0) primeiro = 0;
+    links.forEach(function(l, i){ l.classList.toggle('aqui', i === primeiro); });
+  }, { rootMargin: '-12% 0px -60% 0px', threshold: 0 });
+
+  alvos.forEach(function(t){ if (t) obs.observe(t); });
+})();
+</script>

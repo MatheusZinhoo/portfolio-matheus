@@ -1,0 +1,333 @@
+<title>Painel Corte Reto</title>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Sans+Condensed:wght@600;700&display=swap">
+<style>
+  :root{
+    --fundo:#F1F3F5;
+    --superficie:#FFFFFF;
+    --linha:#DFE3E8;
+    --linha-suave:#EBEEF1;
+    --tinta:#161A1F;
+    --tinta-2:#4C5661;
+    --tinta-3:#7C8792;
+    --acento:#0F4C5C;
+    --acento-claro:#E2EDF0;
+    --serie:#2E7C8C;
+    --bom:#2F7A57;
+    --bom-bg:#E4F1EA;
+    --atencao:#9C6414;
+    --atencao-bg:#F7EDDC;
+    --neutro-bg:#ECEFF2;
+    --sans:'IBM Plex Sans',system-ui,sans-serif;
+    --cond:'IBM Plex Sans Condensed','IBM Plex Sans',sans-serif;
+    --mono:'IBM Plex Mono',ui-monospace,monospace;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--fundo);color:var(--tinta);font-family:var(--sans);font-size:14px;line-height:1.55;-webkit-font-smoothing:antialiased}
+  :focus-visible{outline:2px solid var(--acento);outline-offset:2px}
+  @media(prefers-reduced-motion:reduce){*{transition:none!important}}
+
+  .app{display:grid;grid-template-columns:216px minmax(0,1fr);min-height:100vh}
+  /* ---- lateral ---- */
+  .lateral{background:#101519;color:#C9D1D9;padding:22px 0 60px;display:flex;flex-direction:column;gap:26px}
+  .logo{padding:0 20px;display:flex;align-items:center;gap:11px}
+  .logo .mark{width:32px;height:32px;border-radius:7px;background:var(--serie);color:#04181D;display:grid;place-items:center;font-family:var(--cond);font-weight:700;font-size:15px}
+  .logo b{font-family:var(--cond);font-size:15px;letter-spacing:.02em;color:#fff;display:block;line-height:1.2}
+  .logo small{font-size:11px;color:#7D8894;letter-spacing:.06em;text-transform:uppercase}
+  .nav{display:flex;flex-direction:column;gap:2px;padding:0 10px}
+  .nav a{display:flex;align-items:center;gap:10px;text-decoration:none;color:#9AA5B1;font-size:13.5px;padding:9px 11px;border-radius:6px}
+  .nav a:hover{background:#1A2229;color:#E6EDF3}
+  .nav a.ativo{background:#1D2A30;color:#fff;font-weight:600;box-shadow:inset 2px 0 0 var(--serie)}
+  .nav .dot{width:6px;height:6px;border-radius:50%;background:currentColor;opacity:.55}
+  .lateral .rodape{margin-top:auto;padding:0 20px;font-size:11.5px;color:#6C7681;line-height:1.5}
+  @media(max-width:860px){.app{grid-template-columns:1fr}.lateral{flex-direction:row;align-items:center;padding:14px 0;gap:18px;overflow-x:auto}.nav{flex-direction:row}.lateral .rodape{display:none}}
+
+  /* ---- topo ---- */
+  main{padding:24px 28px 48px;min-width:0}
+  .topo{display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:16px;margin-bottom:22px}
+  .topo h1{font-family:var(--cond);font-size:25px;font-weight:700;margin:0;letter-spacing:-.01em}
+  .topo .data{color:var(--tinta-3);font-size:13px;margin:2px 0 0}
+  .filtros{display:flex;gap:6px;background:var(--superficie);border:1px solid var(--linha);border-radius:8px;padding:3px}
+  .filtros button{font:inherit;font-size:12.5px;border:0;background:transparent;color:var(--tinta-2);padding:6px 13px;border-radius:6px;cursor:pointer}
+  .filtros button[aria-pressed="true"]{background:var(--acento);color:#fff;font-weight:600}
+
+  /* ---- tiles ---- */
+  .tiles{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px;margin-bottom:18px}
+  .tile{background:var(--superficie);border:1px solid var(--linha);border-radius:10px;padding:16px 18px 18px}
+  .tile .rot{font-size:11.5px;letter-spacing:.09em;text-transform:uppercase;color:var(--tinta-3);font-weight:600;margin:0 0 9px}
+  .tile .val{font-family:var(--cond);font-size:31px;font-weight:700;line-height:1;letter-spacing:-.02em;font-variant-numeric:tabular-nums}
+  .tile .val span{font-size:17px;color:var(--tinta-2);font-weight:600}
+  .tile .var{display:inline-flex;align-items:center;gap:5px;margin-top:10px;font-size:12px;font-weight:600;padding:3px 8px;border-radius:999px;font-variant-numeric:tabular-nums}
+  .v-bom{background:var(--bom-bg);color:var(--bom)}
+  .v-neutro{background:var(--neutro-bg);color:var(--tinta-2)}
+  .v-atencao{background:var(--atencao-bg);color:var(--atencao)}
+  @media(max-width:1000px){.tiles{grid-template-columns:repeat(2,minmax(0,1fr))}}
+  @media(max-width:520px){.tiles{grid-template-columns:1fr}}
+
+  /* ---- painéis ---- */
+  .grade{display:grid;grid-template-columns:minmax(0,1.35fr) minmax(0,1fr);gap:14px}
+  @media(max-width:1000px){.grade{grid-template-columns:1fr}}
+  .painel{background:var(--superficie);border:1px solid var(--linha);border-radius:10px;padding:18px 20px 20px;min-width:0}
+  .painel + .painel{margin-top:14px}
+  .cab{display:flex;align-items:baseline;justify-content:space-between;gap:12px;margin-bottom:4px}
+  .cab h2{font-family:var(--cond);font-size:16.5px;font-weight:700;margin:0}
+  .cab .obs{font-size:12px;color:var(--tinta-3)}
+  .legenda-nota{font-size:12px;color:var(--tinta-3);margin:0 0 16px}
+
+  /* ---- gráfico ---- */
+  .gfx{position:relative;display:grid;grid-template-columns:46px minmax(0,1fr);gap:0 8px}
+  .eixoY{position:relative;height:190px;font-family:var(--mono);font-size:11px;color:var(--tinta-3);font-variant-numeric:tabular-nums}
+  .eixoY span{position:absolute;right:0;transform:translateY(-50%);white-space:nowrap}
+  .plot{position:relative;height:190px;border-bottom:1px solid var(--linha)}
+  .grid-l{position:absolute;left:0;right:0;height:1px;background:var(--linha-suave)}
+  .barras{position:absolute;inset:0;display:flex;align-items:flex-end;gap:2px}
+  .col{flex:1;display:flex;flex-direction:column;justify-content:flex-end;align-items:center;height:100%;position:relative;cursor:default}
+  .barra{width:100%;max-width:54px;background:var(--serie);border-radius:4px 4px 0 0;transition:background .12s ease}
+  .col:hover .barra{background:#1E5F6E}
+  .col.zero .barra{background:repeating-linear-gradient(45deg,var(--linha) 0 3px,transparent 3px 6px);height:3px!important;border-radius:0}
+  .rotulo-direto{position:absolute;bottom:calc(100% + 6px);left:50%;transform:translateX(-50%);font-family:var(--mono);font-size:11px;font-weight:600;color:var(--tinta-2);white-space:nowrap}
+  .eixoX{display:flex;gap:2px;margin-top:8px;padding-left:54px}
+  .eixoX span{flex:1;text-align:center;font-size:11.5px;color:var(--tinta-3);letter-spacing:.04em;text-transform:uppercase}
+  .dica{position:absolute;pointer-events:none;background:#141A1F;color:#fff;font-size:12px;padding:7px 10px;border-radius:6px;white-space:nowrap;transform:translate(-50%,-118%);opacity:0;transition:opacity .1s ease;z-index:5;line-height:1.35}
+  .dica b{font-family:var(--mono);font-weight:600}
+  .dica.on{opacity:1}
+
+  /* ---- agenda ---- */
+  .agenda{display:flex;flex-direction:column}
+  .linha{display:grid;grid-template-columns:52px minmax(0,1fr) auto;gap:12px;align-items:center;padding:10px 0;border-top:1px solid var(--linha-suave)}
+  .linha:first-child{border-top:0}
+  .hora{font-family:var(--mono);font-size:13px;color:var(--tinta-2);font-variant-numeric:tabular-nums}
+  .quem{min-width:0}
+  .quem b{display:block;font-weight:600;font-size:13.5px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+  .quem small{color:var(--tinta-3);font-size:12px}
+  .chip{display:inline-flex;align-items:center;gap:5px;font-size:11.5px;font-weight:600;padding:3px 9px;border-radius:999px;white-space:nowrap}
+  .chip svg{flex:none}
+  .c-ok{background:var(--bom-bg);color:var(--bom)}
+  .c-agora{background:var(--acento-claro);color:var(--acento)}
+  .c-esp{background:var(--atencao-bg);color:var(--atencao)}
+  .c-livre{background:var(--neutro-bg);color:var(--tinta-2)}
+  .linha.vaga{background:repeating-linear-gradient(135deg,#F7F9FA 0 6px,#FFF 6px 12px);border-radius:6px;padding-inline:8px;margin-inline:-8px}
+  .linha.vaga .quem b{color:var(--tinta-3);font-weight:500}
+
+  /* ---- serviços ---- */
+  .serv{display:grid;grid-template-columns:minmax(0,1fr) 42px;gap:9px 12px;align-items:center}
+  .serv .nm{font-size:13.5px}
+  .serv .qt{font-family:var(--mono);font-size:13px;text-align:right;font-variant-numeric:tabular-nums;color:var(--tinta-2)}
+  .trilho{grid-column:1/-1;height:7px;border-radius:4px;background:var(--linha-suave);overflow:hidden;margin-top:-5px}
+  .trilho i{display:block;height:100%;background:var(--serie);border-radius:4px}
+
+  .demo{background:#101519;color:#C9D1D9;font-size:12.5px;padding:11px 16px;text-align:center;letter-spacing:.02em}
+  .demo strong{color:#fff}
+</style>
+
+<div class="app">
+  <aside class="lateral">
+    <div class="logo">
+      <div class="mark">CR</div>
+      <div><b>Corte Reto</b><small>Barbearia</small></div>
+    </div>
+    <nav class="nav">
+      <a href="#" class="ativo"><i class="dot"></i>Visão do dia</a>
+      <a href="#"><i class="dot"></i>Agenda</a>
+      <a href="#"><i class="dot"></i>Clientes</a>
+      <a href="#"><i class="dot"></i>Serviços</a>
+      <a href="#"><i class="dot"></i>Caixa</a>
+      <a href="#"><i class="dot"></i>Ajustes</a>
+    </nav>
+    <div class="rodape">Unidade Centro<br>2 profissionais ativos</div>
+  </aside>
+
+  <main>
+    <div class="topo">
+      <div>
+        <h1>Visão do dia</h1>
+        <p class="data">Sábado, 12 de setembro · atualizado às 14h07</p>
+      </div>
+      <div class="filtros" role="group" aria-label="Período">
+        <button type="button" aria-pressed="false">Hoje</button>
+        <button type="button" aria-pressed="true">Esta semana</button>
+        <button type="button" aria-pressed="false">Mês</button>
+      </div>
+    </div>
+
+    <div class="tiles">
+      <div class="tile">
+        <p class="rot">Faturamento da semana</p>
+        <div class="val"><span>R$ </span>8.740</div>
+        <div class="var v-bom">▲ 12% vs. semana anterior</div>
+      </div>
+      <div class="tile">
+        <p class="rot">Atendimentos hoje</p>
+        <div class="val">14</div>
+        <div class="var v-neutro">8 concluídos · 6 na fila</div>
+      </div>
+      <div class="tile">
+        <p class="rot">Ocupação da agenda</p>
+        <div class="val">82<span>%</span></div>
+        <div class="var v-atencao">2 horários livres à tarde</div>
+      </div>
+      <div class="tile">
+        <p class="rot">Ticket médio</p>
+        <div class="val"><span>R$ </span>62</div>
+        <div class="var v-bom">▲ R$ 4 vs. semana anterior</div>
+      </div>
+    </div>
+
+    <div class="grade">
+      <div>
+        <section class="painel">
+          <div class="cab">
+            <h2>Faturamento por dia</h2>
+            <span class="obs">Semana de 07 a 12 de setembro</span>
+          </div>
+          <p class="legenda-nota">Valores em reais, já com as comissões descontadas. Passe o mouse sobre uma barra para ver o número.</p>
+          <div class="gfx">
+            <div class="eixoY" id="eixoY"></div>
+            <div class="plot" id="plot">
+              <div class="barras" id="barras"></div>
+              <div class="dica" id="dica"></div>
+            </div>
+          </div>
+          <div class="eixoX" id="eixoX"></div>
+        </section>
+
+        <section class="painel">
+          <div class="cab">
+            <h2>Serviços mais pedidos</h2>
+            <span class="obs">Últimos 30 dias</span>
+          </div>
+          <p class="legenda-nota">Total de 251 atendimentos no período.</p>
+          <div class="serv" id="serv"></div>
+        </section>
+      </div>
+
+      <section class="painel">
+        <div class="cab">
+          <h2>Agenda de hoje</h2>
+          <span class="obs">10 horários</span>
+        </div>
+        <p class="legenda-nota">Rafa e Léo, das 09h às 18h.</p>
+        <div class="agenda" id="agenda"></div>
+      </section>
+    </div>
+  </main>
+</div>
+
+<div class="demo"><a href="../index.html" style="color:#7FD6E6">← voltar ao portfólio</a> &nbsp;·&nbsp; Projeto de demonstração — dados e marca fictícios, criados para o portfólio de <strong>Matheus Cardozo e Silva</strong>.</div>
+
+<script>
+(function(){
+  // ---- gráfico: uma série, escala única ----
+  var dados = [
+    {dia:'Seg', v:0,    obs:'Fechado'},
+    {dia:'Ter', v:1180, obs:'11 atendimentos'},
+    {dia:'Qua', v:1340, obs:'12 atendimentos'},
+    {dia:'Qui', v:1180, obs:'11 atendimentos'},
+    {dia:'Sex', v:2180, obs:'17 atendimentos'},
+    {dia:'Sáb', v:2860, obs:'21 atendimentos'}
+  ];
+  var topo = 2860, ticks = [0, 700, 1400, 2100, 2800];
+  var brl = function(n){ return 'R$ ' + n.toLocaleString('pt-BR'); };
+
+  var eixoY = document.getElementById('eixoY');
+  var plot  = document.getElementById('plot');
+  ticks.forEach(function(t){
+    var y = 100 - (t / topo * 100);
+    var s = document.createElement('span');
+    s.style.top = y + '%';
+    s.textContent = t.toLocaleString('pt-BR');
+    eixoY.appendChild(s);
+    if (t > 0){
+      var g = document.createElement('div');
+      g.className = 'grid-l';
+      g.style.top = y + '%';
+      plot.appendChild(g);
+    }
+  });
+
+  var barras = document.getElementById('barras');
+  var eixoX  = document.getElementById('eixoX');
+  var dica   = document.getElementById('dica');
+  var maxV   = Math.max.apply(null, dados.map(function(d){ return d.v; }));
+
+  dados.forEach(function(d){
+    var col = document.createElement('div');
+    col.className = 'col' + (d.v === 0 ? ' zero' : '');
+    var b = document.createElement('div');
+    b.className = 'barra';
+    b.style.height = (d.v / topo * 100) + '%';
+    if (d.v === maxV){
+      var r = document.createElement('div');
+      r.className = 'rotulo-direto';
+      r.textContent = brl(d.v);
+      col.appendChild(r);
+    }
+    col.appendChild(b);
+    col.addEventListener('mouseenter', function(){
+      var r = col.getBoundingClientRect(), p = plot.getBoundingClientRect();
+      dica.style.left = (r.left - p.left + r.width / 2) + 'px';
+      dica.style.top  = (r.bottom - p.top - (d.v / topo * r.height)) + 'px';
+      dica.innerHTML = d.dia + ' · <b>' + brl(d.v) + '</b><br>' + d.obs;
+      dica.classList.add('on');
+    });
+    col.addEventListener('mouseleave', function(){ dica.classList.remove('on'); });
+    barras.appendChild(col);
+
+    var x = document.createElement('span');
+    x.textContent = d.dia;
+    eixoX.appendChild(x);
+  });
+
+  // ---- serviços ----
+  var servicos = [
+    ['Corte degradê', 86],
+    ['Corte + barba', 71],
+    ['Barba tradicional', 44],
+    ['Corte social', 38],
+    ['Platinado', 12]
+  ];
+  var maxS = servicos[0][1], alvo = document.getElementById('serv');
+  servicos.forEach(function(s){
+    alvo.insertAdjacentHTML('beforeend',
+      '<div class="nm">' + s[0] + '</div><div class="qt">' + s[1] + '</div>' +
+      '<div class="trilho"><i style="width:' + (s[1] / maxS * 100) + '%"></i></div>');
+  });
+
+  // ---- agenda ----
+  var ok    = '<span class="chip c-ok"><svg width="10" height="10" viewBox="0 0 10 10" aria-hidden="true"><path d="M1 5.2 3.7 8 9 2.2" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>Concluído</span>';
+  var agora = '<span class="chip c-agora"><svg width="10" height="10" viewBox="0 0 10 10" aria-hidden="true"><circle cx="5" cy="5" r="4" fill="currentColor"/></svg>Em atendimento</span>';
+  var conf  = '<span class="chip c-ok"><svg width="10" height="10" viewBox="0 0 10 10" aria-hidden="true"><path d="M1 5.2 3.7 8 9 2.2" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>Confirmado</span>';
+  var esp   = '<span class="chip c-esp"><svg width="10" height="10" viewBox="0 0 10 10" aria-hidden="true"><path d="M5 2.4V5l1.8 1.2" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/><circle cx="5" cy="5" r="4" fill="none" stroke="currentColor" stroke-width="1.4"/></svg>Aguardando</span>';
+  var livre = '<span class="chip c-livre">Horário livre</span>';
+
+  var agenda = [
+    ['09:00','Bruno Tavares','Corte + barba · Rafa', ok],
+    ['09:45','Igor Menezes','Corte social · Rafa', ok],
+    ['10:30','Diego Nunes','Barba tradicional · Léo', ok],
+    ['11:15','—','Sem reserva', livre],
+    ['13:00','Caio Ribeiro','Corte + sobrancelha · Léo', agora],
+    ['13:45','Otávio Lima','Corte degradê · Rafa', conf],
+    ['14:30','Paulo Serra','Corte + barba · Léo', conf],
+    ['15:15','—','Sem reserva', livre],
+    ['16:00','Enzo Prado','Platinado · Rafa', conf],
+    ['17:00','Vitor Sanches','Corte infantil · Léo', esp]
+  ];
+  var lista = document.getElementById('agenda');
+  agenda.forEach(function(a){
+    lista.insertAdjacentHTML('beforeend',
+      '<div class="linha' + (a[3] === livre ? ' vaga' : '') + '">' +
+        '<div class="hora">' + a[0] + '</div>' +
+        '<div class="quem"><b>' + a[1] + '</b><small>' + a[2] + '</small></div>' +
+        a[3] +
+      '</div>');
+  });
+
+  // ---- filtros ----
+  document.querySelectorAll('.filtros button').forEach(function(b){
+    b.addEventListener('click', function(){
+      document.querySelectorAll('.filtros button').forEach(function(o){ o.setAttribute('aria-pressed','false'); });
+      b.setAttribute('aria-pressed','true');
+    });
+  });
+})();
+</script>
