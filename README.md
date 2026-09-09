@@ -22,7 +22,7 @@ Com o repositório já no GitHub:
 2. Em *Source*, escolha **Deploy from a branch**.
 3. Branch: `main`, pasta: `/ (root)`. Salve.
 4. Em um ou dois minutos o site sai em
-   `https://SEU-USUARIO.github.io/portfolio-matheus/`.
+   `https://matheuszinhoo.github.io/portfolio-matheus/`.
 
 Para atualizar depois, basta editar os arquivos e:
 
@@ -36,12 +36,13 @@ git push
 
 Tudo em `index.html`:
 
-| Procurar por | Trocar por |
+| Procurar por | Situação |
 |---|---|
-| `5511900000000` (2x) | seu número: `55` + DDD + número, sem espaços |
-| `(11) 90000-0000` | seu número formatado |
-| `seu-usuario` (4x) | seu usuário do GitHub e do LinkedIn |
-| `São Paulo, BR` (3x) | sua cidade |
+| `5547996559713` (2x) | preenchido |
+| `(47) 99655-9713` | preenchido |
+| `MatheusZinhoo` (2x) | preenchido |
+| `Jaraguá do Sul, SC` (3x) | preenchido |
+| `seu-usuario` (2x) | **pendente** — endereço do seu LinkedIn |
 
 Revise também:
 
