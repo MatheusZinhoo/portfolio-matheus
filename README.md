@@ -8,6 +8,7 @@ Qualquer arquivo abre com dois cliques.
 .
 ├─ index.html              portfólio
 ├─ projetos/
+│  ├─ clinica.html         Clínica Serena — site de clínica de estética
 │  ├─ cafeteria.html       Torra Nove — site de cafeteria
 │  ├─ painel.html          Corte Reto — painel de gestão de barbearia
 │  └─ bot.html             Agenda no Zap — bot de WhatsApp (interativo)
