@@ -1,4 +1,11 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Torra Nove</title>
+<meta name="description" content="Cafeteria de torra própria: cardápio, origens dos grãos e horários. Projeto de demonstração de Matheus Cardozo e Silva.">
+<meta name="theme-color" content="#241610">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300..900&family=Karla:wght@400;500;700&display=swap">
 <style>
@@ -29,13 +36,19 @@
   .menu-topo{display:flex;gap:26px;font-size:13px;letter-spacing:.09em;text-transform:uppercase}
   .menu-topo a{text-decoration:none;opacity:.75;padding-bottom:2px;border-bottom:1px solid transparent}
   .menu-topo a:hover,.menu-topo a:focus-visible{opacity:1;border-bottom-color:var(--ambar)}
-  @media(max-width:720px){.menu-topo{display:none}}
+  @media(max-width:720px){
+    .barra .wrap{gap:14px}
+    .marca{font-size:17px;flex:none}
+    .menu-topo{gap:17px;font-size:11px;overflow-x:auto;white-space:nowrap;scrollbar-width:none}
+    .menu-topo::-webkit-scrollbar{display:none}
+    .menu-topo a{flex:none}
+  }
 
   /* ---- capa ---- */
   .capa{background:var(--espresso);color:var(--creme);background-image:var(--grao),radial-gradient(120% 90% at 78% 8%,#4a3024 0%,rgba(74,48,36,0) 62%);position:relative;overflow:hidden}
   .capa .wrap{padding-block:76px 92px;display:grid;grid-template-columns:minmax(0,1fr) auto;gap:48px;align-items:end}
   .eyebrow{font-size:12px;letter-spacing:.22em;text-transform:uppercase;color:var(--ambar);margin:0 0 22px}
-  .capa h1{font-family:var(--serif);font-variation-settings:'opsz' 120,'SOFT' 0,'WONK' 1;font-weight:500;font-size:clamp(52px,9vw,104px);line-height:.94;letter-spacing:-.025em;margin:0;text-wrap:balance}
+  .capa h1{font-family:var(--serif);font-variation-settings:'opsz' 120,'SOFT' 0,'WONK' 1;font-weight:500;font-size:clamp(34px,9.4vw,104px);line-height:.96;letter-spacing:-.025em;margin:0;text-wrap:balance}
   .capa h1 em{font-style:italic;color:var(--ambar);font-weight:300}
   .capa p.lede{max-width:44ch;margin:26px 0 0;font-size:17px;color:#DCCBB2}
   .selo{border:1px solid rgba(241,231,212,.28);border-radius:999px;padding:26px 22px;text-align:center;min-width:168px}
@@ -104,7 +117,31 @@
   body{padding-bottom:42px}
   @media(prefers-reduced-motion:reduce){*{transition:none!important}}
   :focus-visible{outline:2px solid var(--ambar);outline-offset:3px}
+
+  /* ---- telas pequenas ---- */
+  @media(max-width:760px){
+    body{font-size:15.5px;padding-bottom:0}
+    .wrap{padding:0 18px}
+    .capa .wrap{padding-block:44px 52px;gap:32px}
+    .capa p.lede{font-size:16px;margin-top:20px}
+    .eyebrow{margin-bottom:16px;font-size:11px}
+    .acoes{margin-top:26px}
+    .btn{padding:12px 20px;font-size:13.5px}
+    .selo{min-width:0;padding:20px 24px}
+    .selo b{font-size:38px}
+    .faixa .wrap{gap:6px 20px;font-size:11px;padding-block:11px}
+    section{padding-block:50px}
+    .titulo{font-size:26px}
+    .origem{padding:22px 20px 24px}
+    .grupo h3{margin-top:22px}
+    .item .nome{font-size:15px}
+    .item .preco{font-size:16px}
+    .cartao{padding:24px 20px}
+    .demo{position:static;padding:14px 18px;line-height:1.6}
+  }
 </style>
+</head>
+<body>
 
 <header class="barra">
   <div class="wrap">
@@ -262,3 +299,5 @@
 </footer>
 
 <div class="demo"><a href="../index.html">← voltar ao portfólio</a> &nbsp;·&nbsp; Projeto de demonstração — marca fictícia, criada para o portfólio de <strong>Matheus Cardozo e Silva</strong>.</div>
+</body>
+</html>

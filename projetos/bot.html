@@ -1,4 +1,11 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Agenda no Zap</title>
+<meta name="description" content="Assistente de WhatsApp que agenda horários sozinho. Demonstração interativa de Matheus Cardozo e Silva.">
+<meta name="theme-color" content="#0B1219">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=Outfit:wght@300;400;500;600;700&display=swap">
 <style>
@@ -84,7 +91,30 @@
 
   .demo{background:#050A0E;color:var(--gelo-3);font-size:12.5px;padding:12px 16px;text-align:center;border-top:1px solid var(--borda)}
   .demo strong{color:var(--gelo)}
+
+  /* ---- telas pequenas ---- */
+  @media(max-width:760px){
+    body{font-size:15.5px}
+    .wrap{padding:0 18px}
+    header .wrap{padding-block:15px;gap:10px}
+    .marca{font-size:15px}
+    .tag{font-size:10px;padding:3px 8px}
+    .topo{padding-block:30px 38px;gap:34px}
+    h1{font-size:clamp(27px,7.6vw,52px);line-height:1.08}
+    .lede{font-size:16.5px;margin-bottom:26px}
+    .fluxo li{padding-bottom:19px}
+    .fluxo b{font-size:14.5px}
+    .fluxo span{font-size:13.5px}
+    .numeros{gap:24px;padding-top:22px}
+    .numeros b{font-size:25px}
+    .fone{height:min(74vh,520px);border-width:7px;border-radius:28px;max-width:none}
+    .recursos{padding-block:38px}
+    .recursos h2{margin-bottom:20px}
+    .demo{padding:14px 18px;line-height:1.6}
+  }
 </style>
+</head>
+<body>
 
 <header>
   <div class="wrap">
@@ -274,3 +304,5 @@
   ir('inicio');
 })();
 </script>
+</body>
+</html>

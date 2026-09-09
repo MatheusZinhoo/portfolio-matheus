@@ -1,4 +1,11 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Painel Corte Reto</title>
+<meta name="description" content="Painel de gestão para barbearia: faturamento, agenda, clientes, serviços e caixa. Projeto de demonstração de Matheus Cardozo e Silva.">
+<meta name="theme-color" content="#101519">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Sans+Condensed:wght@600;700&display=swap">
 <style>
@@ -43,7 +50,16 @@
   .nav button[aria-current="page"]{background:#1D2A30;color:#fff;font-weight:600;box-shadow:inset 2px 0 0 var(--serie)}
   .nav .dot{width:6px;height:6px;border-radius:50%;background:currentColor;opacity:.55;flex:none}
   .lateral .rodape{margin-top:auto;padding:0 20px;font-size:11.5px;color:#6C7681;line-height:1.5}
-  @media(max-width:860px){.app{grid-template-columns:1fr}.lateral{padding:14px 0;gap:14px}.nav{flex-direction:row;flex-wrap:wrap}.lateral .rodape{display:none}}
+  @media(max-width:860px){
+    .app{grid-template-columns:1fr}
+    .lateral{padding:12px 0 13px;gap:12px}
+    .logo{padding:0 16px}
+    .nav{flex-direction:row;flex-wrap:nowrap;overflow-x:auto;padding:0 12px 3px;gap:6px;-webkit-overflow-scrolling:touch;scrollbar-width:none}
+    .nav::-webkit-scrollbar{display:none}
+    .nav button{flex:none;white-space:nowrap;padding:8px 13px;font-size:13px}
+    .nav .dot{display:none}
+    .lateral .rodape{display:none}
+  }
 
   /* ---- topo ---- */
   main{padding:24px 28px 48px;min-width:0}
@@ -66,7 +82,7 @@
   .v-neutro{background:var(--neutro-bg);color:var(--tinta-2)}
   .v-atencao{background:var(--atencao-bg);color:var(--atencao)}
   @media(max-width:1000px){.tiles{grid-template-columns:repeat(2,minmax(0,1fr))}}
-  @media(max-width:520px){.tiles{grid-template-columns:1fr}}
+  @media(max-width:400px){.tiles{grid-template-columns:1fr}}
 
   /* ---- painéis ---- */
   .grade{display:grid;grid-template-columns:minmax(0,1.35fr) minmax(0,1fr);gap:14px}
@@ -168,7 +184,39 @@
   .demo{background:#101519;color:#C9D1D9;font-size:12.5px;padding:11px 16px;text-align:center;letter-spacing:.02em}
   .demo strong{color:#fff}
   .demo a{color:#7FD6E6}
+
+  /* ---- telas pequenas ---- */
+  .dica-rolagem{display:none;font-size:11.5px;color:var(--tinta-3);font-family:var(--mono);margin:0 0 10px}
+  @media(max-width:760px){
+    main{padding:18px 16px 40px}
+    .topo{margin-bottom:16px;gap:12px}
+    .topo h1{font-size:22px}
+    .topo .data{font-size:12.5px}
+    .filtros{width:100%}
+    .filtros button{flex:1;white-space:nowrap;padding:8px 6px;font-size:12px}
+    .tiles{gap:10px;margin-bottom:14px}
+    .tile{padding:13px 14px 15px}
+    .tile .val{font-size:26px}
+    .tile .val span{font-size:15px}
+    .tile .var{font-size:11px}
+    .painel{padding:15px 15px 17px}
+    .painel + .painel{margin-top:12px}
+    .grade{gap:12px}
+    .gfx{grid-template-columns:38px minmax(0,1fr);gap:0 6px}
+    .eixoX{padding-left:44px}
+    .eixoY,.plot{height:158px}
+    .rotulo-direto{font-size:10px}
+    .dica-rolagem{display:block}
+    .rolagem{margin-inline:-15px;padding-inline:15px}
+    .semana{min-width:600px}
+    .semana td{height:44px;padding:6px 8px}
+    .tabela{min-width:520px}
+    .resumo-caixa{gap:10px}
+    .form-grade{gap:14px}
+  }
 </style>
+</head>
+<body>
 
 <div class="app">
   <aside class="lateral">
@@ -251,6 +299,7 @@
           <span class="obs">Segunda fechado</span>
         </div>
         <p class="legenda-nota">Horários com fundo azul estão reservados. Os demais continuam livres para encaixe.</p>
+        <p class="dica-rolagem">arraste a tabela para o lado →</p>
         <div class="rolagem">
           <table class="semana" id="semana"></table>
         </div>
@@ -265,6 +314,7 @@
           <span class="obs">8 de 312</span>
         </div>
         <p class="legenda-nota">"Sumido" marca quem não aparece há mais de 60 dias — bom alvo para uma mensagem de retorno.</p>
+        <p class="dica-rolagem">arraste a tabela para o lado →</p>
         <div class="rolagem">
           <table class="tabela" id="tab-clientes"></table>
         </div>
@@ -279,6 +329,7 @@
           <span class="obs">Vigente desde 01/08</span>
         </div>
         <p class="legenda-nota">A coluna da direita mostra a participação de cada serviço nos 172 atendimentos do mês.</p>
+        <p class="dica-rolagem">arraste a tabela para o lado →</p>
         <div class="rolagem">
           <table class="tabela" id="tab-servicos"></table>
         </div>
@@ -310,6 +361,7 @@
           <span class="obs">Sábado, 12 de setembro</span>
         </div>
         <p class="legenda-nota">Pix cai direto na conta da barbearia; dinheiro e cartão entram no fechamento do dia.</p>
+        <p class="dica-rolagem">arraste a tabela para o lado →</p>
         <div class="rolagem">
           <table class="tabela" id="tab-caixa"></table>
         </div>
@@ -526,14 +578,17 @@
       b.style.height = (d.v / maxV * 100) + '%';
       col.appendChild(b);
 
-      col.addEventListener('mouseenter', function(){
+      function mostra(){
         var rc = col.getBoundingClientRect(), pc = plot.getBoundingClientRect();
         dica.style.left = (rc.left - pc.left + rc.width / 2) + 'px';
         dica.style.top  = (rc.bottom - pc.top - (d.v / maxV * rc.height)) + 'px';
         dica.innerHTML = d.r + ' · <b>' + brl(d.v) + '</b><br>' + d.o;
         dica.classList.add('on');
-      });
+      }
+      col.addEventListener('mouseenter', mostra);
       col.addEventListener('mouseleave', function(){ dica.classList.remove('on'); });
+      /* no celular não existe hover: um toque na barra mostra o valor */
+      col.addEventListener('click', function(ev){ ev.stopPropagation(); mostra(); });
       barras.appendChild(col);
 
       var x = document.createElement('span');
@@ -728,6 +783,12 @@
     });
   });
 
+  document.addEventListener('click', function(e){
+    if (!e.target.closest('.col')) dica.classList.remove('on');
+  });
+
   aplica('hoje');
 })();
 </script>
+</body>
+</html>
