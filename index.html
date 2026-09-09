@@ -70,8 +70,8 @@
   }
 
   *{box-sizing:border-box}
-  html{scroll-behavior:smooth;scroll-padding-top:56px}
-  body{margin:0;background:var(--bg);color:var(--txt);font-family:var(--sans);font-size:16px;line-height:1.62;-webkit-font-smoothing:antialiased;padding-bottom:30px}
+  html{scroll-behavior:smooth;scroll-padding-top:56px;-webkit-text-size-adjust:100%;text-size-adjust:100%}
+  body{margin:0;background:var(--bg);color:var(--txt);font-family:var(--sans);font-size:16px;line-height:1.62;-webkit-font-smoothing:antialiased;padding-bottom:30px;overflow-x:clip}
   a{color:inherit}
   ::selection{background:var(--ac);color:var(--sobre-ac)}
   :focus-visible{outline:2px solid var(--ac);outline-offset:2px}
@@ -304,7 +304,7 @@
     <section id="inicio">
       <span class="estado"><i></i>disponível para novos projetos</span>
       <h1>Sites, interfaces e automações escritos à mão<span class="cur" aria-hidden="true"></span></h1>
-      <p class="lede">Sou <strong>Matheus Cardozo e Silva</strong>, desenvolvedor front-end há mais de três anos. Trabalho com HTML, CSS e JavaScript de verdade — nada de construtor de página arrastando bloco. O resultado abre rápido no 4G, funciona no celular do seu cliente e não quebra na próxima atualização de um plugin.</p>
+      <p class="lede">Sou <strong>Matheus Cardozo e Silva</strong>, desenvolvedor front-end há mais de três anos. HTML, CSS e JavaScript de verdade — sem construtor de página, sem plugin que quebra na próxima atualização.</p>
       <div class="botoes">
         <a class="btn btn-cheio" href="#contato">Falar sobre o seu projeto</a>
         <a class="btn btn-vazio" href="#projetos">Ver o código rodando</a>
@@ -312,20 +312,20 @@
 
       <div class="specs">
         <div class="spec">
-          <b>sem construtor de página</b>
-          <span>Código escrito e versionado no Git. Na entrega, o repositório é seu — outro desenvolvedor consegue continuar de onde eu parei.</span>
+          <b>código escrito à mão</b>
+          <span>Versionado no Git. Na entrega, o repositório é seu.</span>
         </div>
         <div class="spec">
           <b>leve por construção</b>
-          <span>Cada página deste portfólio é um único arquivo HTML, sem framework e sem dependência externa além das fontes.</span>
+          <span>Uma página, um arquivo. Sem framework, sem peso morto.</span>
         </div>
         <div class="spec">
           <b>testado em tela pequena</b>
-          <span>Layout conferido no celular antes de subir, não depois que o cliente reclama.</span>
+          <span>Conferido no celular antes de subir.</span>
         </div>
         <div class="spec">
           <b>resposta em 1 dia útil</b>
-          <span>Você manda a ideia, eu volto com perguntas e um caminho técnico. Sem sumiço no meio do projeto.</span>
+          <span>Você manda a ideia, eu volto com um caminho.</span>
         </div>
       </div>
     </section>
@@ -336,23 +336,18 @@
       <div class="sobre">
         <div>
           <h2>Três anos de mercado, e poucos clientes por vez.</h2>
-          <p>Trabalho com desenvolvimento há mais de três anos. Nesse tempo aprendi que a maior parte dos problemas de um site não é técnica — é alguém que começou a construir antes de perguntar o que o negócio precisava.</p>
-          <p>Como freelancer eu atendo poucos projetos ao mesmo tempo, de propósito. Na prática isso quer dizer que o seu não fica na fila: dá tempo de entender o negócio antes de abrir o editor, testar em aparelho de verdade e refazer a tela que ficou estranha.</p>
-          <p>Trabalho em três frentes que quase sempre andam juntas: a <strong>página</strong> que o cliente vê, o <strong>desenho</strong> dessa página e a <strong>automação</strong> do que acontece depois que alguém clica em enviar. Gosto de resolver coisa chata e repetitiva — o orçamento feito à mão, o WhatsApp que fica sem resposta de madrugada, a planilha que alguém copia e cola toda segunda-feira.</p>
-          <p>Escrevo tudo em português claro. Se você não entender uma decisão técnica que eu tomei, a falha é minha em explicar — pode perguntar quantas vezes precisar.</p>
+          <p>A maior parte dos problemas de um site não é técnica — é alguém que começou a construir antes de perguntar o que o negócio precisava.</p>
+          <p>Atendo poucos projetos ao mesmo tempo, de propósito: o seu não fica na fila. E escrevo tudo em português claro. Se você não entender uma decisão técnica que eu tomei, a falha é minha em explicar.</p>
         </div>
         <div class="ficha">
           <div class="tt">FICHA TÉCNICA</div>
           <dl>
             <dt>base</dt><dd>Jaraguá do Sul, SC</dd>
             <dt>atendimento</dt><dd>remoto · <em>SC presencial</em></dd>
-            <dt>idioma</dt><dd>português</dd>
-            <dt>foco</dt><dd><em>front-end</em></dd>
             <dt>experiência</dt><dd>3+ anos</dd>
-            <dt>reuniões</dt><dd>chamada ou áudio</dd>
+            <dt>foco</dt><dd><em>front-end</em></dd>
             <dt>entrega</dt><dd>repositório Git</dd>
             <dt>suporte</dt><dd>30 dias inclusos</dd>
-            <dt>status</dt><dd><em>aceitando projetos</em></dd>
           </dl>
         </div>
       </div>
@@ -368,7 +363,7 @@
           <div class="chave">web<small>site · landing page</small></div>
           <div>
             <h3>Sites e páginas de venda</h3>
-            <p>Da página única que apresenta o serviço até o site de várias seções com cardápio, catálogo ou portfólio. Feito para abrir rápido, aparecer na busca do Google e levar a pessoa até o botão de contato.</p>
+            <p>Página única ou site completo. Abre rápido, aparece na busca do Google e leva a pessoa até o botão de contato.</p>
             <ul class="lista">
               <li>layout responsivo</li>
               <li>otimização para busca</li>
@@ -383,7 +378,7 @@
           <div class="chave">ui<small>interface · protótipo</small></div>
           <div>
             <h3>Design de interface</h3>
-            <p>O desenho antes do código: como a tela se organiza, o que aparece primeiro, quais cores e tipos a marca usa. Serve tanto para um produto novo quanto para arrumar um sistema que já existe e ficou confuso de usar.</p>
+            <p>O desenho antes do código: o que aparece primeiro, como a tela se organiza, quais cores e tipos a marca usa.</p>
             <ul class="lista">
               <li>protótipo navegável</li>
               <li>paleta e tipografia</li>
@@ -397,7 +392,7 @@
           <div class="chave">auto<small>bot · integração</small></div>
           <div>
             <h3>Automações e integrações</h3>
-            <p>Tudo aquilo que hoje alguém faz repetindo o mesmo clique. Robô de atendimento no WhatsApp, envio automático de proposta, planilha que se preenche sozinha, relatório que chega por e-mail toda segunda.</p>
+            <p>Aquilo que hoje alguém faz repetindo o mesmo clique: atendimento no WhatsApp, planilha que se preenche sozinha, relatório que chega por e-mail.</p>
             <ul class="lista">
               <li>bot de WhatsApp</li>
               <li>integração com planilhas</li>
@@ -435,7 +430,7 @@
           </div>
           <div class="txt">
             <h3>torra-nove</h3>
-            <p>Site de cafeteria de torra própria: capa, origens dos grãos, cardápio completo e informações de visita.</p>
+            <p>Site de cafeteria: cardápio, origens dos grãos e horários.</p>
             <div class="meta">
               <span class="ling"><i style="background:#E44D26"></i>HTML</span>
               <span class="ling"><i style="background:#2965F1"></i>CSS</span>
@@ -472,7 +467,7 @@
           </div>
           <div class="txt">
             <h3>corte-reto</h3>
-            <p>Painel de gestão de barbearia com seis telas navegáveis: visão do dia, agenda da semana, clientes, serviços, caixa e ajustes.</p>
+            <p>Painel de barbearia com seis telas: agenda, clientes, serviços, caixa.</p>
             <div class="meta">
               <span class="ling"><i style="background:#F0DB4F"></i>JavaScript</span>
               <span class="ling"><i style="background:#2965F1"></i>CSS</span>
@@ -508,7 +503,7 @@
           </div>
           <div class="txt">
             <h3>agenda-no-zap</h3>
-            <p>Assistente de WhatsApp que agenda horários sozinho. Clique nas opções e feche uma reserva de ponta a ponta.</p>
+            <p>Bot de WhatsApp que agenda sozinho. Clique e feche uma reserva.</p>
             <div class="meta">
               <span class="ling"><i style="background:#F0DB4F"></i>JavaScript</span>
               <span class="ling"><i style="background:#E44D26"></i>HTML</span>
@@ -518,7 +513,7 @@
         </a>
       </div>
 
-      <p class="nota">Projetos autorais, com marcas fictícias, feitos para mostrar padrão de acabamento — está escrito na própria página que são demonstrações. O código-fonte dos três está no mesmo repositório desta página.</p>
+      <p class="nota">Marcas fictícias, criadas para mostrar acabamento. Código-fonte no mesmo repositório desta página.</p>
     </section>
 
     <!-- ===================== processo ===================== -->
@@ -528,19 +523,19 @@
       <ol class="etapas">
         <li>
           <b>Conversa</b>
-          <span>Uma chamada de 30 minutos para eu entender o negócio, o público e o que precisa acontecer na página.</span>
+          <span>30 minutos para eu entender o negócio e o público.</span>
         </li>
         <li>
           <b>Combinado</b>
-          <span>Escopo, prazo e o que exatamente entra na entrega, tudo por escrito antes de eu abrir o editor.</span>
+          <span>Escopo, prazo e entregáveis por escrito antes de eu começar.</span>
         </li>
         <li>
           <b>Construção</b>
-          <span>Você acompanha por um link que atualiza sozinho a cada mudança. Uma rodada de ajustes por etapa.</span>
+          <span>Você acompanha por um link que atualiza sozinho.</span>
         </li>
         <li>
           <b>Entrega</b>
-          <span>Site publicado, acessos e repositório no seu nome, e 30 dias de suporte para o que aparecer.</span>
+          <span>Site no ar, repositório no seu nome, 30 dias de suporte.</span>
         </li>
       </ol>
 
@@ -548,19 +543,19 @@
       <div class="pilha">
         <div>
           <h4>FRONT-END</h4>
-          <ul><li>HTML</li><li>CSS</li><li>JavaScript</li><li>React</li><li>Tailwind</li></ul>
+          <ul><li>React</li><li>JavaScript</li><li>HTML</li><li>CSS</li><li>Tailwind</li></ul>
         </div>
         <div>
           <h4>BACK-END</h4>
-          <ul><li>Node.js</li><li>Supabase</li><li>REST APIs</li></ul>
+          <ul><li>Node.js</li><li>Java</li><li>Python</li><li>REST APIs</li></ul>
         </div>
         <div>
-          <h4>DESIGN</h4>
-          <ul><li>Figma</li><li>Tipografia</li><li>Design system</li></ul>
+          <h4>DADOS</h4>
+          <ul><li>Oracle</li><li>Caché</li><li>Supabase</li><li>Sheets API</li></ul>
         </div>
         <div>
           <h4>OPERAÇÃO</h4>
-          <ul><li>Git / GitHub</li><li>Vercel</li><li>n8n</li><li>Google Sheets API</li></ul>
+          <ul><li>Git / GitHub</li><li>Vercel</li><li>Figma</li><li>n8n</li></ul>
         </div>
       </div>
     </section>
@@ -572,27 +567,19 @@
       <div class="duvidas">
         <details open>
           <summary>Em quanto tempo fica pronto?</summary>
-          <p>Uma landing page costuma levar de 5 a 10 dias. Um site com várias seções, de 2 a 4 semanas. Automações variam bastante conforme os sistemas envolvidos. O prazo entra no combinado por escrito e eu aviso na hora se algo atrasar — não no dia da entrega.</p>
+          <p>Landing page: 5 a 10 dias. Site com várias seções: 2 a 4 semanas. O prazo entra no combinado por escrito, e eu aviso na hora se atrasar.</p>
         </details>
         <details>
-          <summary>Eu preciso já ter domínio e hospedagem?</summary>
-          <p>Não. Se você ainda não tem, eu indico onde comprar e configuro tudo — mas sempre registrado no seu nome, com você como dono da conta. Domínio de cliente em nome do desenvolvedor é dor de cabeça garantida lá na frente.</p>
+          <summary>Preciso já ter domínio e hospedagem?</summary>
+          <p>Não. Eu indico onde comprar e configuro — mas sempre no seu nome, com você como dono da conta.</p>
         </details>
         <details>
           <summary>Como eu acompanho o andamento?</summary>
-          <p>Cada mudança que eu faço sobe para um link de teste que atualiza sozinho. Você abre no celular quando quiser, vê como está ficando e me manda os ajustes. Nada de esperar semanas para ver a primeira tela.</p>
+          <p>Cada mudança sobe para um link de teste que atualiza sozinho. Você abre no celular quando quiser.</p>
         </details>
         <details>
-          <summary>E depois que entrega, acabou?</summary>
-          <p>Trinta dias de suporte já vêm inclusos para corrigir qualquer coisa que apareça. Depois disso dá para contratar manutenção mensal ou me chamar pontualmente quando precisar mudar algo.</p>
-        </details>
-        <details>
-          <summary>Você faz o texto e as fotos também?</summary>
-          <p>Ajudo com o texto: reescrevo o que você me mandar para ficar mais direto. Fotos profissionais eu não faço, mas oriento o que fotografar e trato as imagens que você tiver.</p>
-        </details>
-        <details>
-          <summary>Por que não usar WordPress ou um construtor de sites?</summary>
-          <p>Para muita gente serve, e eu digo isso na cara. Mas construtor entrega uma página pesada, cheia de código que você não usa, presa a uma assinatura mensal e a plugins que podem quebrar sozinhos. Se o site é a vitrine principal do seu negócio, vale ter algo escrito sob medida — que você pode levar para qualquer hospedagem no dia em que quiser.</p>
+          <summary>Por que não usar WordPress ou um construtor?</summary>
+          <p>Para muita gente serve. Mas construtor entrega página pesada, presa a assinatura mensal e a plugins que quebram sozinhos. Se o site é a vitrine do negócio, vale ter algo que você pode levar para qualquer hospedagem.</p>
         </details>
       </div>
     </section>
@@ -604,7 +591,7 @@
         <div class="tt">ABRIR CONVERSA</div>
         <div class="in">
           <h2>Me conta a sua ideia.</h2>
-          <p>Não precisa chegar com tudo pronto. Um parágrafo dizendo o que é o negócio e o que você quer que aconteça já basta para eu voltar com um caminho.</p>
+          <p>Um parágrafo dizendo o que é o negócio e o que você quer que aconteça já basta.</p>
 
           <div class="canais">
             <a class="canal" href="https://wa.me/5547996559713?text=Oi%20Matheus!%20Vi%20seu%20portf%C3%B3lio%20e%20queria%20falar%20sobre%20um%20projeto." target="_blank" rel="noopener">
@@ -619,9 +606,9 @@
               <span class="ic"><svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><path d="M6 14.2c-3 .9-3-1.6-4.2-1.9m8.4 3.4v-2.6c0-.7.1-1-.3-1.4 1.9-.2 3.6-.9 3.6-4a3.1 3.1 0 0 0-.9-2.2 2.9 2.9 0 0 0-.1-2.2s-.7-.2-2.4.9a8.2 8.2 0 0 0-4.2 0C4.2 3.1 3.5 3.3 3.5 3.3a2.9 2.9 0 0 0-.1 2.2 3.1 3.1 0 0 0-.9 2.2c0 3.1 1.7 3.8 3.6 4-.3.3-.3.7-.3 1.1v2.9" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
               <span><b>github</b><small>github.com/MatheusZinhoo</small></span>
             </a>
-            <a class="canal" href="https://www.linkedin.com/in/seu-usuario" target="_blank" rel="noopener">
+            <a class="canal" href="https://www.linkedin.com/in/matheus-cardozo-e-silva-1bb743251/" target="_blank" rel="noopener">
               <span class="ic"><svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><rect x="1.5" y="1.5" width="13" height="13" rx="2" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M5 6.8v4.4M5 4.6v.1M8 11.2V6.8m0 1.4c.4-1.2 3-1.5 3 .8v2.2" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></span>
-              <span><b>linkedin</b><small>linkedin.com/in/seu-usuario</small></span>
+              <span><b>linkedin</b><small>linkedin.com/in/matheus-cardozo-e-silva</small></span>
             </a>
           </div>
 

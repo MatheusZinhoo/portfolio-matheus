@@ -23,7 +23,8 @@
     --sans:'Karla','Helvetica Neue',Arial,sans-serif;
   }
   *{box-sizing:border-box}
-  body{margin:0;background:var(--creme);color:var(--tinta);font-family:var(--sans);font-size:16px;line-height:1.6;-webkit-font-smoothing:antialiased}
+  html{-webkit-text-size-adjust:100%;text-size-adjust:100%}
+  body{margin:0;overflow-x:clip;background:var(--creme);color:var(--tinta);font-family:var(--sans);font-size:16px;line-height:1.6;-webkit-font-smoothing:antialiased}
   img{max-width:100%}
   a{color:inherit}
   .wrap{max-width:1080px;margin:0 auto;padding:0 28px}
@@ -39,7 +40,7 @@
   @media(max-width:720px){
     .barra .wrap{gap:14px}
     .marca{font-size:17px;flex:none}
-    .menu-topo{gap:17px;font-size:11px;overflow-x:auto;white-space:nowrap;scrollbar-width:none}
+    .menu-topo{gap:17px;font-size:11px;overflow-x:auto;white-space:nowrap;min-width:0;scrollbar-width:none}
     .menu-topo::-webkit-scrollbar{display:none}
     .menu-topo a{flex:none}
   }

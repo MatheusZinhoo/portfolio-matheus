@@ -42,7 +42,7 @@ Tudo em `index.html`:
 | `(47) 99655-9713` | preenchido |
 | `MatheusZinhoo` (2x) | preenchido |
 | `Jaraguá do Sul, SC` (3x) | preenchido |
-| `seu-usuario` (2x) | **pendente** — endereço do seu LinkedIn |
+| LinkedIn | preenchido |
 
 Revise também:
 
