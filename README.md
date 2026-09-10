@@ -1,6 +1,6 @@
 # Portfólio — Matheus Cardozo e Silva
 
-Portfólio pessoal e três projetos de demonstração. HTML, CSS e JavaScript puro:
+Portfólio pessoal e cinco projetos de demonstração. HTML, CSS e JavaScript puro:
 sem framework, sem build, sem dependência além das fontes do Google Fonts.
 Qualquer arquivo abre com dois cliques.
 
@@ -8,6 +8,7 @@ Qualquer arquivo abre com dois cliques.
 .
 ├─ index.html              portfólio
 ├─ projetos/
+│  ├─ unhas.html           Studio Nina — site de studio de unhas e cílios
 │  ├─ clinica.html         Clínica Serena — site de clínica de estética
 │  ├─ cafeteria.html       Torra Nove — site de cafeteria
 │  ├─ painel.html          Corte Reto — painel de gestão de barbearia

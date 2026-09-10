@@ -9,7 +9,7 @@
 <meta name="theme-color" content="#0D1013" media="(prefers-color-scheme: dark)">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Matheus Cardozo e Silva — desenvolvedor front-end">
-<meta property="og:description" content="Sites, interfaces e automações escritos à mão. Três projetos que abrem e funcionam de verdade.">
+<meta property="og:description" content="Sites, interfaces e automações escritos à mão. Cinco projetos que abrem e funcionam de verdade.">
 <meta property="og:url" content="https://matheuszinhoo.github.io/portfolio-matheus/">
 <meta property="og:locale" content="pt_BR">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -177,6 +177,16 @@
   .ling{display:inline-flex;align-items:center;gap:6px}
   .ling i{width:9px;height:9px;border-radius:50%;flex:none}
   .repo .abrir{color:var(--ci);margin-left:auto}
+  /* cartao em destaque: ocupa a linha inteira, senao o quinto projeto ficaria sozinho */
+  .repo.destaque{grid-column:1/-1;flex-direction:row;align-items:stretch}
+  .repo.destaque .miniatura{flex:0 0 44%;aspect-ratio:auto;min-height:200px;border-bottom:0;border-right:1px solid var(--linha)}
+  .repo.destaque .txt{justify-content:center;padding:22px 26px 24px;gap:9px}
+  .repo.destaque p{font-size:15px;max-width:48ch}
+  @media(max-width:760px){
+    .repo.destaque{flex-direction:column}
+    .repo.destaque .miniatura{flex:none;aspect-ratio:300/132;min-height:0;border-right:0;border-bottom:1px solid var(--linha)}
+    .repo.destaque .txt{padding:14px 15px 16px}
+  }
   .nota{font-family:var(--mono);font-size:12.5px;color:var(--txt-3);margin-top:18px;max-width:78ch;line-height:1.7}
 
   /* ---------- processo ---------- */
@@ -410,9 +420,54 @@
     <!-- ===================== projetos ===================== -->
     <section id="projetos">
       <p class="anot">projetos/</p>
-      <h2>Quatro peças que abrem e funcionam de verdade.</h2>
+      <h2>Cinco peças que abrem e funcionam de verdade.</h2>
 
       <div class="repos">
+        <a class="repo destaque" href="projetos/unhas.html">
+          <div class="miniatura">
+            <svg viewBox="0 0 300 132" preserveAspectRatio="xMidYMid slice" role="img" aria-label="Miniatura do site do studio de unhas e cílios">
+              <rect width="300" height="132" fill="#FFF9F8"/>
+              <rect x="0" y="21" width="300" height="1" fill="#EFDFE1"/>
+              <rect x="16" y="7" width="40" height="8" rx="2" fill="#1B1218"/>
+              <rect x="196" y="9" width="20" height="4" rx="2" fill="#B7A3AC"/>
+              <rect x="224" y="9" width="16" height="4" rx="2" fill="#B7A3AC"/>
+              <rect x="250" y="5" width="34" height="13" rx="6.5" fill="#C31650"/>
+              <rect x="16" y="36" width="52" height="9" rx="4.5" fill="#FFE1E8"/>
+              <rect x="16" y="54" width="112" height="10" rx="2" fill="#1B1218"/>
+              <rect x="16" y="70" width="86" height="10" rx="2" fill="#C31650"/>
+              <rect x="16" y="92" width="54" height="13" rx="6.5" fill="#C31650"/>
+              <rect x="78" y="92" width="48" height="13" rx="6.5" fill="none" stroke="#1B1218"/>
+              <g>
+                <rect x="168" y="40" width="13" height="24" rx="6" fill="#C08063"/>
+                <rect x="185" y="40" width="13" height="24" rx="6" fill="#D29C97"/>
+                <rect x="202" y="40" width="13" height="24" rx="6" fill="#A8253A"/>
+                <rect x="219" y="40" width="13" height="24" rx="6" fill="#4E0F22"/>
+                <rect x="236" y="40" width="13" height="24" rx="6" fill="#8C7BA6"/>
+                <rect x="253" y="40" width="13" height="24" rx="6" fill="#22304F"/>
+                <rect x="270" y="40" width="13" height="24" rx="6" fill="#E3D9D1"/>
+                <rect x="168" y="74" width="13" height="24" rx="6" fill="#1B1218"/>
+                <rect x="185" y="74" width="13" height="24" rx="6" fill="#948E98"/>
+                <rect x="202" y="74" width="13" height="24" rx="6" fill="#4C5A41"/>
+                <rect x="219" y="74" width="13" height="24" rx="6" fill="#633B2A"/>
+                <rect x="236" y="74" width="13" height="24" rx="6" fill="#D96450"/>
+                <rect x="253" y="74" width="13" height="24" rx="6" fill="#C08063"/>
+                <rect x="270" y="74" width="13" height="24" rx="6" fill="#D1495B"/>
+              </g>
+            </svg>
+          </div>
+          <div class="txt">
+            <span class="tipo" style="font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--txt-3)">Em destaque</span>
+            <h3>studio-nina</h3>
+            <p>Site de studio de unhas e cílios: tabela de preços, cartela de cores clicável e um formulário que monta a mensagem do WhatsApp já com a cor escolhida.</p>
+            <div class="meta">
+              <span class="ling"><i style="background:#E44D26"></i>HTML</span>
+              <span class="ling"><i style="background:#2965F1"></i>CSS</span>
+              <span class="ling"><i style="background:#F0DB4F"></i>JavaScript</span>
+              <span class="abrir">abrir →</span>
+            </div>
+          </div>
+        </a>
+
         <a class="repo" href="projetos/clinica.html">
           <div class="miniatura">
             <svg viewBox="0 0 300 132" role="img" aria-label="Miniatura do site da clínica de estética">
